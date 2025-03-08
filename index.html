@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/98cd313376.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <label for="html"><i class="fa-brands fa-html5"></i>  HTML</label>
+            <textarea  id="html" oninput="updateLineNumbers('html')" onscroll="syncScroll('html')" onkeyup="run()"></textarea>
+            <label for="css"><i class="fa-brands fa-css3-alt"></i>  CSS</label>
+            <textarea  id="css" oninput="updateLineNumbers('css')" onscroll="syncScroll('css')" onkeyup="run()"></textarea>
+            <label for="js"><i class="fa-brands fa-square-js"></i>  JAVASCRIPT</label>
+            <textarea  id="js" oninput="updateLineNumbers('js')" onscroll="syncScroll('js')" onkeyup="run()"></textarea>
+        </div>
+        <div class="right">
+            <label ><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+   
+    <script>
+            function run(){
+            let htmlCode=document.getElementById("html").value;
+            let cssCode=document.getElementById("css").value;
+            let jsCode=document.getElementById("js").value;
+            let Output=document.getElementById("output").value;
+            Output.contentDocument.body.innerHTML=htmlCode+"<style>"+cssCode+"<style>";
+            Output.contentWindow.eval(jsCode);
+        }
+
+        function updateLineNumbers(id) {
+            let textarea = document.getElementById(id);
+            let lineNumberDiv = document.getElementById(id + "-lines");
+            let lines = textarea.value.split("\n").length;
+            let lineNumbersHTML = "";
+
+            for (let i = 1; i <= lines; i++) {
+                lineNumbersHTML += i + "\n";
+            }
+            lineNumberDiv.textContent = lineNumbersHTML;
+        }
+
+        function syncScroll(id) {
+            let textarea = document.getElementById(id);
+            let lineNumberDiv = document.getElementById(id + "-lines");
+            lineNumberDiv.scrollTop = textarea.scrollTop;
+        }
+    </script>
+
+</body>
+</html>
