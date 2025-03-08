@@ -14,7 +14,7 @@
                 <label for="html"><i class="fa-brands fa-html5"></i> HTML</label>
                 <div class="code-container">
                     <div class="line-numbers" id="html-lines">1</div>
-                    <textarea id="html" oninput="updateLineNumbers('html')" onscroll="syncScroll('html')"></textarea>
+                    <textarea id="html"  ></textarea>
                 </div>
             </div>
             
@@ -22,7 +22,7 @@
                 <label for="css"><i class="fa-brands fa-css3-alt"></i> CSS</label>
                 <div class="code-container">
                     <div class="line-numbers" id="css-lines">1</div>
-                    <textarea id="css" oninput="updateLineNumbers('css')" onscroll="syncScroll('css')"></textarea>
+                    <textarea id="css"  ></textarea>
                 </div>
             </div>
             
@@ -30,7 +30,7 @@
                 <label for="js"><i class="fa-brands fa-square-js"></i> JavaScript</label>
                 <div class="code-container">
                     <div class="line-numbers" id="js-lines">1</div>
-                    <textarea id="js" oninput="updateLineNumbers('js')" onscroll="syncScroll('js')"></textarea>
+                    <textarea id="js"  ></textarea>
                 </div>
             </div>
             
@@ -57,23 +57,8 @@
     output.defaultView.eval(jsCode);
 }
 
-        function updateLineNumbers(id) {
-            let textarea = document.getElementById(id);
-            let lineNumberDiv = document.getElementById(id + "-lines");
-            let lines = textarea.value.split("\n").length;
-            let lineNumbersHTML = "";
-
-            for (let i = 1; i <= lines; i++) {
-                lineNumbersHTML += i + "\n";
-            }
-            lineNumberDiv.textContent = lineNumbersHTML;
-        }
-
-        function syncScroll(id) {
-            let textarea = document.getElementById(id);
-            let lineNumberDiv = document.getElementById(id + "-lines");
-            lineNumberDiv.scrollTop = textarea.scrollTop;
-        }
+     
+       
     </script>
 
 </body>
